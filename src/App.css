@@ -76,7 +76,7 @@ body {
   color: #fff;
   line-height: 24px;
 }
-.home-banner .content button {
+.home-banner .content a {
   background-color: #FF8C38;
   width: 500px;
   height: 50px;
@@ -87,6 +87,10 @@ body {
   font-weight: 600;
   margin-top: 20px;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
 }
 .about-banner {
   background: url('./images/about-banner.png') no-repeat;
@@ -116,7 +120,7 @@ body {
 .about-page .explore-vans h4 {
   font-size: 24px;
 }
-.about-page .explore-vans button {
+.about-page .explore-vans a {
   background-color: #161616;
   color: #fff;
   padding: 10px 30px;
@@ -125,4 +129,5 @@ body {
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
+  text-decoration: none;
 }
