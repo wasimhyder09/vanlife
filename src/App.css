@@ -14,7 +14,7 @@ body {
 }
 .container {
   background-color: #F5F5F5;
-  height: 100%;
+  /* height: 100%; */
   padding-top: 0px;
   position: relative;
 }
@@ -52,8 +52,6 @@ body {
   height: 75px;
   display: grid;
   align-items: center;
-  position: absolute;
-  bottom: 0px;
   width: 100%;
 }
 .footer p {
@@ -116,6 +114,7 @@ body {
   padding: 1px 25px 15px 25px;
   background-color: #FFCC8D;
   border-radius: 5px;
+  margin-bottom: 35px;
 }
 .about-page .explore-vans h4 {
   font-size: 24px;
@@ -130,4 +129,7 @@ body {
   line-height: 24px;
   font-weight: 700;
   text-decoration: none;
+}
+.van-title img{
+  width: 10%;
 }
