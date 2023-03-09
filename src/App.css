@@ -60,3 +60,31 @@ body {
   margin: 0 auto;
   font-size: 15px;
 }
+.home-banner {
+  background: url('./images/home.png') no-repeat;
+  height: 80vh;
+  background-size: cover;
+}
+.home-banner .content {
+  padding: 150px 30px;
+}
+.home-banner .content h3.plans {
+  font-size: 36px;
+  color: #fff;
+}
+.home-banner .content p {
+  color: #fff;
+  line-height: 24px;
+}
+.home-banner .content button {
+  background-color: #FF8C38;
+  width: 500px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}
