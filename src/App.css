@@ -61,7 +61,7 @@ body {
   font-size: 15px;
 }
 .home-banner {
-  background: url('./images/home.png') no-repeat;
+  background: url('./images/home-banner.png') no-repeat;
   height: 80vh;
   background-size: cover;
 }
@@ -87,4 +87,42 @@ body {
   font-weight: 600;
   margin-top: 20px;
   cursor: pointer;
+}
+.about-banner {
+  background: url('./images/about-banner.png') no-repeat;
+  height: 210px;
+  background-size: cover;
+}
+.about-page {
+  background-color: #FFF7ED;
+  height: 80%;
+}
+.about-content {
+  padding: 0px 20px;
+}
+.about-content h3 {
+  color: #161616;
+  font-size: 32px;
+  margin-top: 10px;
+}
+.about-content p {
+  line-height: 22px;
+}
+.about-page .explore-vans {
+  padding: 1px 25px 15px 25px;
+  background-color: #FFCC8D;
+  border-radius: 5px;
+}
+.about-page .explore-vans h4 {
+  font-size: 24px;
+}
+.about-page .explore-vans button {
+  background-color: #161616;
+  color: #fff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
 }
