@@ -2,15 +2,13 @@ import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import '../server'
 export default function Vans() {
-  console.log('component ran')
   const[vansData, setVansData] = useState([])
 
   //Fetch data from  MirageJS server
   useEffect(() => {
-    console.log('Effect ran')
     fetch("/api/vans")
       .then(res => res.json())
-      .then(data => setVansData(data))
+      .then(data => setVansData(data.vans))
   }, [])
 
   const vanElements = vansData.map(van => (
