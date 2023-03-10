@@ -11,7 +11,7 @@ export default function Vans() {
   }, [])
 
   const vanElements = vansData.map(van => (
-    <div key={van.id} className="van-title">
+    <div key={van.id} className="van-tile">
       <img src={van.imageUrl} />
       <div className="van-info">
         <h3>{van.name}</h3>
@@ -21,8 +21,10 @@ export default function Vans() {
     </div>
   ))
   return(
-    <>
-      {vanElements}
-    </>
+    <div className='van-list-container'>
+      <div className="van-list">
+        {vanElements}
+      </div>
+    </div>
   )
 }
