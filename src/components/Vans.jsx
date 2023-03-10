@@ -8,7 +8,7 @@ export default function Vans() {
   useEffect(() => {
     fetch("/api/vans")
       .then(res => res.json())
-      .then(data => setVansData(data.vans))
+      .then(data => console.log(data))
   }, [])
 
   const vanElements = vansData.map(van => (
