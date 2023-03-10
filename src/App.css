@@ -65,7 +65,7 @@ a {
   font-size: 15px;
 }
 .home-banner {
-  background: url('./images/home-banner.png') no-repeat;
+  background: url('./assets/images/home-banner.png') no-repeat;
   height: 80vh;
   background-size: cover;
 }
@@ -98,7 +98,7 @@ a {
   line-height: 50px;
 }
 .about-banner {
-  background: url('./images/about-banner.png') no-repeat;
+  background: url('./assets/images/about-banner.png') no-repeat;
   height: 210px;
   background-size: cover;
 }
