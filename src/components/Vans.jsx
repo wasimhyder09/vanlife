@@ -10,7 +10,7 @@ export default function Vans() {
     console.log('Effect ran')
     fetch("/api/vans")
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => setVansData(data))
   }, [])
 
   const vanElements = vansData.map(van => (
