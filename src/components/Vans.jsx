@@ -12,8 +12,8 @@ export default function Vans() {
   }, [])
 
   const vanElements = vansData.map(van => (
-    <Link to={`/vans/${van.id}`}>
-      <div key={van.id} className="van-tile">
+    <Link key={van.id} to={`/vans/${van.id}`}>
+      <div className="van-tile">
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
