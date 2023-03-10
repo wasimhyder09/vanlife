@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import '../server'
 export default function Vans() {
+  console.log('component ran')
   const[vansData, setVansData] = useState([])
 
   //Fetch data from  MirageJS server
