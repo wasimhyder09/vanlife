@@ -6,6 +6,7 @@ export default function Vans() {
 
   //Fetch data from  MirageJS server
   useEffect(() => {
+    console.log('Effect ran')
     fetch("/api/vans")
       .then(res => res.json())
       .then(data => console.log(data))
