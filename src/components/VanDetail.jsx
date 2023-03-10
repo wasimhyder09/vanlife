@@ -14,7 +14,7 @@ export default function VanDetail() {
       <div className="van-detail">
         <Link to="/vans" className='back-to-vans'>&larr; Back to all vans</Link>
         <div className="van-tile">
-          <img src={vanData.imageUrl} alt="Van image"/>
+          <img src={vanData.imageUrl} alt="Van"/>
           <div className="van-info">
             <i className={`van-type ${vanData.type} selected`}>{vanData.type}</i>
             <h3>{vanData.name}</h3>
