@@ -16,7 +16,7 @@ a {
   font-family: 'Inter', sans-serif;
 }
 .container {
-  background-color: #F5F5F5;
+  background-color: #FFF7ED;
   padding-top: 0px;
   position: relative;
 }
@@ -138,7 +138,9 @@ a {
   text-decoration: none;
 }
 .van-list-container {
-  padding-inline: 23px
+  padding-inline: 23px;
+  padding-bottom: 20px;
+  background-color: #FFF7ED;
 }
 .van-list {
   display: grid;
