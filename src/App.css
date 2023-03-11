@@ -53,16 +53,15 @@ a {
   color: #000;
 }
 .footer {
-  background-color: #252525;
+  background-color: #161616;
   color: #AAAAAA;
-  height: 75px;
-  display: grid;
+  height: 74px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-}
-.footer p {
-  margin: 0 auto;
-  font-size: 15px;
+  margin-top: auto;
+  font-weight: 500;
 }
 .home-banner {
   background: url('./assets/images/home-banner.png') no-repeat;
@@ -249,4 +248,9 @@ a.back-to-vans {
   color: #161616;
   text-decoration: underline;
   font-weight: 600;
+}
+.header nav a.is-active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #161616;
 }
