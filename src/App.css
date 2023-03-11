@@ -62,6 +62,7 @@ a {
   align-items: center;
   margin-top: auto;
   font-weight: 500;
+  width: 100%;
 }
 .home-banner {
   background: url('./assets/images/home-banner.png') no-repeat;
@@ -221,6 +222,7 @@ a.back-to-vans {
   margin-bottom: 10px;
   float: left;
   text-decoration: underline;
+  margin-bottom: 20px;
 }
 .van-detail .van-type {
   top: 10px;
@@ -282,4 +284,48 @@ a.back-to-vans {
 .van-host-tile .left-side img {
   max-width: 70%;
   border-radius: 5px;
+}
+
+.host-van-detail-container {
+  float: left;
+  padding-bottom: 20px;
+}
+.host-van-detail-container .van-detail {
+  padding: 20px;
+  background-color: #FFF7ED;
+}
+.host-van-detail-container .van-tile {
+  background-color: #fff;
+  float: left;
+  padding: 20px;
+}
+.host-van-detail-container .van-tile .top-info {
+  float: left;
+  width: 100%;
+}
+.host-van-detail-container .van-detail .van-tile img {
+  border-radius: 5px;
+  max-width: 30%;
+  float: left;
+  margin-right: 25px;
+}
+.host-van-detail-container .van-detail .van-info {
+  width: 60%;
+  float: left;
+  line-height: 10px;
+}
+.host-van-detail-container .van-detail .van-tile h3 {
+  margin-top: 45px;
+}
+.host-van-detail-container .van-detail .van-tile .bottom-info {
+  float: left;
+}
+.host-van-detail-container .bottom-info p {
+  font-size: 16px;
+}
+.host-van-detail-container .bottom-info p span {
+  font-weight: 600;
+}
+.host-van-detail-container .bottom-info p.type {
+  text-transform: capitalize;
 }
