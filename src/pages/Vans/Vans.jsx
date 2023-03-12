@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import '../../server'
 export default function Vans() {
+  const [searchParams, setSearchParams] = useSearchParams()
   const[vansData, setVansData] = useState([])
+  const typeFilter = searchParams.get('type')
 
   //Fetch data from  MirageJS server
   useEffect(() => {
@@ -11,7 +13,8 @@ export default function Vans() {
       .then(data => setVansData(data.vans))
   }, [])
 
-  const vanElements = vansData.map(van => (
+  const displayedVans = typeFilter ? vansData.filter(vansData => vansData.type.toLowerCase() === typeFilter) : vansData
+  const vanElements = displayedVans.map(van => (
     <Link key={van.id} to={`/vans/${van.id}`}>
       <div className="van-tile">
         <img src={van.imageUrl} alt="Van"/>
