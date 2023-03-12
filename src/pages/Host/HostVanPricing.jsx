@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 export default function HostVanPricing() {
-  const[hostVanData, setHostVanData] = useOutletContext()
+  const{ hostVanData } = useOutletContext()
   return(
     <>
       {hostVanData ? (

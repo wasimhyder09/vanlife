@@ -42,7 +42,7 @@ export default function HostVanDetail() {
         </div>
       </div>
       ) : <h2>Loading ...</h2>}
-      <Outlet context={[hostVanData, setHostVanData]} />
+      <Outlet context={{hostVanData}} />
     </div>
   )
 }
