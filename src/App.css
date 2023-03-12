@@ -348,3 +348,6 @@ a.back-to-vans:hover span {
 .host-van-detail-container .host-van-detail-info img {
   max-width: 20%;
 }
+.van-list-filter-buttons a.van-type {
+  margin: 0 5px;
+}
