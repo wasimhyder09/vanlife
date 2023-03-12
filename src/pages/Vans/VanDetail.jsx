@@ -12,7 +12,7 @@ export default function VanDetail() {
     <div className="van-detail-container">
       {vanData ? (
       <div className="van-detail">
-        <Link to="/vans" className='back-to-vans'>&larr; Back to all vans</Link>
+        <Link to="/vans" className='back-to-vans'>&larr; <span>Back to all vans</span></Link>
         <div className="van-tile">
           <img src={vanData.imageUrl} alt="Van"/>
           <div className="van-info">

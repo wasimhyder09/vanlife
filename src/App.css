@@ -80,8 +80,7 @@ a {
   color: #fff;
   line-height: 24px;
 }
-.home-banner .content a,
-.van-detail .van-tile a {
+.home-banner .content a {
   background-color: #FF8C38;
   width: 500px;
   height: 50px;
@@ -218,11 +217,16 @@ i[class*='van-type-'] {
   background-color: #FFF7ED;
 }
 a.back-to-vans {
-  color: #000;
+  color: #858585;
   margin-bottom: 10px;
   float: left;
-  text-decoration: underline;
   margin-bottom: 20px;
+}
+a.back-to-vans span {
+  color: #000;
+}
+a.back-to-vans:hover span {
+  text-decoration: underline;
 }
 .van-detail .van-type {
   top: 10px;
@@ -256,7 +260,8 @@ a.back-to-vans {
   text-decoration: underline;
   font-weight: 600;
 }
-.header nav a.is-active {
+.header nav a.is-active,
+.van-detail nav a.is-active {
   font-weight: bold;
   text-decoration: underline;
   color: #161616;
@@ -305,7 +310,7 @@ a.back-to-vans {
 }
 .host-van-detail-container .van-detail .van-tile img {
   border-radius: 5px;
-  max-width: 30%;
+  width: 30%;
   float: left;
   margin-right: 25px;
 }
@@ -328,4 +333,8 @@ a.back-to-vans {
 }
 .host-van-detail-container .bottom-info p.type {
   text-transform: capitalize;
+}
+.host-van-detail-container .host-nav {
+  float: left;
+  margin-top: 10px;
 }
