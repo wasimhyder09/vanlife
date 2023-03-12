@@ -338,3 +338,13 @@ a.back-to-vans:hover span {
   float: left;
   margin-top: 10px;
 }
+.host-van-detail-container .host-van-detail-info {
+  padding: 40px;
+  background-color: #fff;
+}
+.host-van-detail-container .host-van-detail-info p.type {
+  text-transform: capitalize;
+}
+.host-van-detail-container .host-van-detail-info img {
+  max-width: 20%;
+}
