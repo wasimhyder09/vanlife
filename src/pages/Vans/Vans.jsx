@@ -1,16 +1,22 @@
 import {useState, useEffect} from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { getVans } from '../../api';
 import '../../server'
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams()
   const[vansData, setVansData] = useState([])
   const typeFilter = searchParams.get('type')
+  const [loading, setLoading] = useState(false)
 
   //Fetch data from  MirageJS server
   useEffect(() => {
-    fetch("/api/vans")
-      .then(res => res.json())
-      .then(data => setVansData(data.vans))
+    async function loadVans() {
+      setLoading(true)
+      const data = await getVans()
+      setVansData(data)
+      setLoading(false)
+    }
+    loadVans()
   }, [])
 
   const displayedVans = typeFilter ? vansData.filter(vansData => vansData.type.toLowerCase() === typeFilter) : vansData
@@ -32,6 +38,11 @@ export default function Vans() {
       </div>
     </Link>
   ))
+
+  if(loading) {
+    return <h1>Loading ...</h1>
+  }
+
   return(
     <div className='van-list-container'>
       <h1>Explore our van options</h1>
