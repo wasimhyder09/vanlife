@@ -3,18 +3,22 @@ import {useState, useEffect} from 'react';
 export default function VanDetail() {
   const [vanData, setVanData] = useState(null)
   const params = useParams().id
-  const location = '?' + useLocation().state.search.toString()
+  const location = useLocation()
 
   useEffect(() => {
     fetch(`/api/vans/${params}`)
     .then(res => res.json())
     .then(data => setVanData(data.vans))
   }, [params])
+
+  const search = location.state?.search || ""
+  const type = location.state?.type || "all"
+
   return(
     <div className="van-detail-container">
       {vanData ? (
       <div className="van-detail">
-        <Link to={`..${location ? location : null}`} relative='path' className='back-to-vans'>&larr; <span>Back to all vans</span></Link>
+        <Link to={`..${search}`} relative='path' className='back-to-vans'>&larr; <span>Back to {type} vans</span></Link>
         <div className="van-tile">
           <img src={vanData.imageUrl} alt="Van"/>
           <div className="van-info">
