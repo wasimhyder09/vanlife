@@ -15,7 +15,9 @@ export default function Vans() {
 
   const displayedVans = typeFilter ? vansData.filter(vansData => vansData.type.toLowerCase() === typeFilter) : vansData
   const vanElements = displayedVans.map(van => (
-    <Link key={van.id} to={`${van.id}`}>
+    <Link
+      key={van.id}
+      to={van.id} state={{ search: searchParams.toString() }}>
       <div className="van-tile">
         <img src={van.imageUrl} alt="Van"/>
         <div className="van-info">
