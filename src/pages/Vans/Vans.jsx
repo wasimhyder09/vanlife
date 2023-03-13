@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { getVans } from '../../api';
 import '../../server'
 export default function Vans() {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const[vansData, setVansData] = useState([])
   const typeFilter = searchParams.get('type')
   const [loading, setLoading] = useState(false)
@@ -47,9 +47,9 @@ export default function Vans() {
     <div className='van-list-container'>
       <h1>Explore our van options</h1>
       <div className="van-list-filter-buttons">
-        <Link className={`van-type simple ${typeFilter == 'simple' ? 'selected' : null}`} to="?type=simple">Simple</Link>
-        <Link className={`van-type rugged ${typeFilter == 'rugged' ? 'selected' : null}`} to="?type=rugged">Rugged</Link>
-        <Link className={`van-type luxury ${typeFilter == 'luxury' ? 'selected' : null}`} to="?type=luxury">Luxury</Link>
+        <Link className={`van-type simple ${typeFilter === 'simple' ? 'selected' : null}`} to="?type=simple">Simple</Link>
+        <Link className={`van-type rugged ${typeFilter === 'rugged' ? 'selected' : null}`} to="?type=rugged">Rugged</Link>
+        <Link className={`van-type luxury ${typeFilter === 'luxury' ? 'selected' : null}`} to="?type=luxury">Luxury</Link>
         {typeFilter ? <Link className='van-type clear-filters' to=".">Clear Filters</Link> : ''}
       </div>
       <div className="van-list">
