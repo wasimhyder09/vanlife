@@ -80,7 +80,8 @@ a {
   color: #fff;
   line-height: 24px;
 }
-.home-banner .content a {
+.home-banner .content a,
+.not-found a {
   background-color: #FF8C38;
   width: 500px;
   height: 50px;
@@ -95,6 +96,12 @@ a {
   display: inline-block;
   text-align: center;
   line-height: 50px;
+}
+.not-found {
+  padding: 30px;
+}
+.not-found a {
+  background-color: #000;
 }
 .about-banner {
   background: url('./assets/images/about-banner.png') no-repeat;
