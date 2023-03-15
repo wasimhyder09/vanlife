@@ -419,3 +419,13 @@ a.login-link {
 a.login-link:hover {
   text-decoration: none;
 }
+.message.success {
+  width: 100%;
+  background-color: #7cbc48;
+  height: 40px;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+}
