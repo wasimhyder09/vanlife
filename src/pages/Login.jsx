@@ -1,15 +1,31 @@
 import { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { loginUser } from "../api"
 
 export default function Login() {
   const [loginFormData, setLoginFormData] = useState({email: "", password: ""})
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState(null)
   const location = useLocation()
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
+    setStatus('submitting')
+    setError(null)
     loginUser(loginFormData)
-    .then(data => console.log(data))
+    .then(data => {
+      if(data.token) {
+        navigate('/host')
+      }
+      setStatus('idle')
+    })
+    .catch(err => {
+      setError(err)
+    })
+    .finally(() => {
+      setStatus("idle")
+    })
   }
 
   function handleChange(e) {
@@ -22,7 +38,8 @@ export default function Login() {
 
   return(
     <div className="login-container">
-      {(location.state ? <div className="message success">{location.state.message}</div> : "")}
+      {(location.state ? <div className="message warning">{location.state.message}</div> : "")}
+      {(error ? <div className="message error">{error.message}</div> : "")}
       <h1>Sign in to your account</h1>
       <form onSubmit={handleSubmit} className="login-form" autoComplete="off">
         <input
@@ -41,7 +58,14 @@ export default function Login() {
           value={loginFormData.password}
           autoComplete="off"
         />
-        <button>Log in</button>
+        <button
+          disabled={status === 'submitting'}
+          >
+          {status === "submitting"
+            ? "Logging in..."
+            : "Log in"
+          }
+          </button>
       </form>
     </div>
   )
