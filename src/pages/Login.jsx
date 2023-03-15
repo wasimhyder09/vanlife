@@ -15,10 +15,8 @@ export default function Login() {
     setError(null)
     loginUser(loginFormData)
     .then(data => {
-      if(data.token) {
-        navigate('/host')
-      }
-      setStatus('idle')
+      localStorage.setItem("loggedIn", true)
+      navigate('/host', {replace: true})
     })
     .catch(err => {
       setError(err)
