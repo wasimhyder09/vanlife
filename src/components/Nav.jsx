@@ -20,10 +20,10 @@ import Login from "../pages/Login";
 import AuthRequired from "./AuthRequired"
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Layout />} errorElement={<Error />}>
+  <Route path="/" element={<Layout />}>
     <Route index element={<Home />} />
     <Route path="about" element={<About />} />
-    <Route path="vans" element={<Vans />} loader={vansLoader} />
+    <Route path="vans" element={<Vans />} loader={vansLoader}  errorElement={<Error />}/>
     <Route path="vans/:id" element={<VanDetail />} />
     <Route path="login" element={<Login />} />
     <Route element={<AuthRequired />}>
