@@ -8,6 +8,7 @@ export default function Login() {
   const [error, setError] = useState(null)
   const location = useLocation()
   const navigate = useNavigate()
+  const redirectPath = location.state?.redirectPath || '/host'
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -16,7 +17,7 @@ export default function Login() {
     loginUser(loginFormData)
     .then(data => {
       localStorage.setItem("loggedIn", true)
-      navigate('/host', {replace: true})
+      navigate(redirectPath, {replace: true})
     })
     .catch(err => {
       setError(err)

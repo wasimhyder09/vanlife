@@ -1,5 +1,8 @@
 import { Link, NavLink } from "react-router-dom"
 export default function Header() {
+  function fakeLogOut() {
+    localStorage.removeItem("loggedIn")
+  }
   return(
     <div className="header">
         <div className="logo">
@@ -21,6 +24,7 @@ export default function Header() {
           <NavLink to="login" className="login-link">
             &nbsp;
           </NavLink>
+          <button onClick={fakeLogOut}>X</button>
         </nav>
       </div>
   )
