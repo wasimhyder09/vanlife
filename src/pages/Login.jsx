@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useLocation, useNavigate, Form, useActionData } from "react-router-dom"
+import { useLocation, useNavigate, useNavigation, Form, useActionData } from "react-router-dom"
 import { loginUser } from "../api"
 
 export async function action({ request }) {
@@ -24,6 +24,7 @@ export default function Login() {
   const navigate = useNavigate()
   const redirectPath = location.state?.redirectPath || '/host'
   const data = useActionData()
+  const navigation = useNavigation()
 
   if(data?.token) {
     navigate(redirectPath, {replace: true})
@@ -48,9 +49,9 @@ export default function Login() {
           autoComplete="off"
         />
         <button
-          disabled={status === 'submitting'}
+          disabled={navigation.state === 'submitting'}
           >
-          {status === "submitting"
+          {navigation.state === "submitting"
             ? "Logging in..."
             : "Log in"
           }

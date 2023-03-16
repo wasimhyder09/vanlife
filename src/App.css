@@ -410,6 +410,10 @@ a.back-to-vans:hover span {
   color: white;
   font-family: "Inter", sans-serif;
 }
+.login-form > button:disabled {
+  background-color: #AAAAAA;
+  cursor: not-allowed;
+}
 a.login-link {
   background-position: center;
   margin-left: 15px;
