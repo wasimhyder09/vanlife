@@ -1,38 +1,27 @@
 import { useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, Form, useActionData } from "react-router-dom"
 import { loginUser } from "../api"
 
+export async function action({ request }) {
+  const formData = await request.formData()
+  const email = formData.get('email')
+  const password = formData.get('password')
+  const data = await loginUser({email, password})
+  localStorage.setItem('loggedIn', true)
+  return data
+}
+
 export default function Login() {
-  const [loginFormData, setLoginFormData] = useState({email: "", password: ""})
+  const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState(null)
   const location = useLocation()
   const navigate = useNavigate()
   const redirectPath = location.state?.redirectPath || '/host'
+  const data = useActionData()
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setStatus('submitting')
-    setError(null)
-    loginUser(loginFormData)
-    .then(data => {
-      localStorage.setItem("loggedIn", true)
-      navigate(redirectPath, {replace: true})
-    })
-    .catch(err => {
-      setError(err)
-    })
-    .finally(() => {
-      setStatus("idle")
-    })
-  }
-
-  function handleChange(e) {
-    const {name, value} = e.target
-    setLoginFormData(prev => ({
-      ...prev,
-      [name] : value
-    }))
+  if(data?.token) {
+    navigate(redirectPath, {replace: true})
   }
 
   return(
@@ -40,21 +29,17 @@ export default function Login() {
       {(location.state ? <div className="message warning">{location.state.message}</div> : "")}
       {(error ? <div className="message error">{error.message}</div> : "")}
       <h1>Sign in to your account</h1>
-      <form onSubmit={handleSubmit} className="login-form" autoComplete="off">
+      <Form className="login-form" action="/login" method="post">
         <input
           type="email"
           name="email"
-          onChange={handleChange}
           placeholder="Email address"
-           value={loginFormData.email}
-           autoComplete="off"
+          autoComplete="off"
         />
         <input
           type="password"
           name="password"
-          onChange={handleChange}
           placeholder="Password"
-          value={loginFormData.password}
           autoComplete="off"
         />
         <button
@@ -65,7 +50,7 @@ export default function Login() {
             : "Log in"
           }
           </button>
-      </form>
+      </Form>
     </div>
   )
 }
