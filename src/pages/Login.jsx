@@ -6,15 +6,20 @@ export async function action({ request }) {
   const formData = await request.formData()
   const email = formData.get('email')
   const password = formData.get('password')
-  const data = await loginUser({email, password})
-  localStorage.setItem('loggedIn', true)
-  return data
+  try {
+    const data = await loginUser({email, password})
+    localStorage.setItem('loggedIn', true)
+    return data
+  } catch (err) {
+    return {
+      error: err.message
+    }
+  }
 }
 
 export default function Login() {
   const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
   const [status, setStatus] = useState('idle')
-  const [error, setError] = useState(null)
   const location = useLocation()
   const navigate = useNavigate()
   const redirectPath = location.state?.redirectPath || '/host'
@@ -27,7 +32,7 @@ export default function Login() {
   return(
     <div className="login-container">
       {(location.state ? <div className="message warning">{location.state.message}</div> : "")}
-      {(error ? <div className="message error">{error.message}</div> : "")}
+      {(data?.error ? <div className="message error">{data.error}</div> : "")}
       <h1>Sign in to your account</h1>
       <Form className="login-form" action="/login" method="post">
         <input
