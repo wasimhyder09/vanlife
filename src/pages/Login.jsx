@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import { useLocation, useNavigate, useNavigation, Form, useActionData } from "react-router-dom"
 import { loginUser } from "../api"
 
@@ -18,17 +18,17 @@ export async function action({ request }) {
 }
 
 export default function Login() {
-  const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
-  const [status, setStatus] = useState('idle')
   const location = useLocation()
   const navigate = useNavigate()
   const redirectPath = location.state?.redirectPath || '/host'
   const data = useActionData()
   const navigation = useNavigation()
 
-  if(data?.token) {
-    navigate(redirectPath, {replace: true})
-  }
+  useEffect(() => {
+    if(data?.token) {
+      navigate(redirectPath, {replace: true})
+    }
+  }, [data])
 
   return(
     <div className="login-container">
