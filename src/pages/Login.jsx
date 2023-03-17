@@ -28,7 +28,7 @@ export default function Login() {
     if(data?.token) {
       navigate(redirectPath, {replace: true})
     }
-  }, [data])
+  }, [])
 
   return(
     <div className="login-container">
