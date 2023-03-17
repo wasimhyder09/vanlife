@@ -1,22 +1,19 @@
-import {Link, useParams, useLocation} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {Suspense} from 'react';
+import {Link, useLocation, useLoaderData, defer, Await} from 'react-router-dom';
+import { getVans } from '../../api';
+
+export function loader({params}) {
+  return defer({vanData: getVans(params.id)})
+}
+
 export default function VanDetail() {
-  const [vanData, setVanData] = useState(null)
-  const params = useParams().id
   const location = useLocation()
+  const dataPromise = useLoaderData()
 
-  useEffect(() => {
-    fetch(`/api/vans/${params}`)
-    .then(res => res.json())
-    .then(data => setVanData(data.vans))
-  }, [params])
-
-  const search = location.state?.search || ""
-  const type = location.state?.type || "all"
-
-  return(
-    <div className="van-detail-container">
-      {vanData ? (
+  function renderVanDetail(vanData) {
+    const search = location.state?.search || ""
+    const type = location.state?.type || "all"
+    return(
       <div className="van-detail">
         <Link to={`..${search}`} relative='path' className='back-to-vans'>&larr; <span>Back to {type} vans</span></Link>
         <div className="van-tile">
@@ -30,7 +27,16 @@ export default function VanDetail() {
           </div>
         </div>
       </div>
-      ) : <h2>Loading ...</h2>}
+    )
+  }
+
+  return(
+    <div className="van-detail-container">
+      <Suspense fallback={<h2>Loading van...</h2>}>
+        <Await resolve={dataPromise.vanData}>
+          { renderVanDetail }
+        </Await>
+      </Suspense>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements } f
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Vans, { loader as vansLoader } from '../pages/Vans/Vans';
-import VanDetail from "../pages/Vans/VanDetail";
+import VanDetail, { loader as vanDetailLoader } from "../pages/Vans/VanDetail";
 import Layout from "./Layout";
 import Dashboard from "../pages/Host/Dashboard";
 import Income from "../pages/Host/Income";
@@ -20,11 +20,11 @@ import Login, {action as loginAction} from "../pages/Login";
 import AuthRequired from "./AuthRequired"
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Layout />}>
+  <Route path="/" element={<Layout />} errorElement={<Error />}>
     <Route index element={<Home />} />
     <Route path="about" element={<About />} />
-    <Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<Error />}/>
-    <Route path="vans/:id" element={<VanDetail />} />
+    <Route path="vans" element={<Vans />} loader={vansLoader}/>
+    <Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
     <Route
       path="login"
       element={<Login />}
@@ -34,7 +34,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="host" element={<HostLayout />} >
         <Route index element={<Dashboard />} />
         <Route path="income" element={<Income />} />
-        <Route path="vans" element={<HostVans />} loader={vansHostLoader} errorElement={<Error />} />
+        <Route path="vans" element={<HostVans />} loader={vansHostLoader}/>
         <Route path="vans/:id" element={<HostVanDetail />}>
           <Route index element={<HostVanInfo />} />
           <Route path="pricing" element={<HostVanPricing />} />
